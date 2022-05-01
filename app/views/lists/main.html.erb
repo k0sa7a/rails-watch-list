@@ -1,0 +1,32 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);">
+  <div class="container">
+    <h1>Quickly select <strong>films</strong> from <strong>newest releases</strong>!</h1>
+    <p>Create your own watchlist and never miss a title ever again</p>
+    <a class="btn btn-flat" href="/lists/new">Create list</a>
+  </div>
+</div>
+
+<div class="container cont-main">
+  <div class="cards">
+
+  <% @lists.each do |list|  %>
+    <% if list.movies.first.nil? %>
+    <%   url = "https://picsum.photos/860/1290" %>
+    <% else %>
+    <%   url = list.movies.first.poster_url %>
+    <% end %>
+    <%= link_to list_path(list) do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= url %>)"><%= list.name[0..15] %></div>
+    <% end %>
+  <% end %>
+
+
+  </div>
+</div>
+
+
+ <!-- <% @lists.each do |list|  %>
+    <%= link_to list_path(list) do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)"><%= list.name[0..15] %></div>
+    <% end %>
+  <% end %> -->
