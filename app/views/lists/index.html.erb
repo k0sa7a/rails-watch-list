@@ -1,6 +1,21 @@
-<h1>All Lists:</h1>
-<ul>
+<div class= "container">
+  <h1 class="text-center">All lists</h1>
+
   <% @lists.each do |list|  %>
-  <li><%= link_to list.name, list_path(list) %></li>
+    <%= link_to list_path(list) do %>
+
+     <div class="card-trip">
+     <% url = list.movies.first.nil? ? "https://picsum.photos/860/1290" : list.movies.sample.poster_url %>
+     <img src= <%= url %> />
+     <div class="card-trip-infos">
+       <div>
+         <h2><%= list.name %></h2>
+         <p><%= list.movies.count %><%= " movies" %></p>
+       </div>
+       <h2 class="card-trip-pricing"><%= list.created_at.to_time.strftime("%d of %B, %Y") %></h2>
+       <img src="https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80" class="card-trip-user avatar-bordered" />
+     </div>
+   </div>
+   <% end %>
   <% end %>
-</ul>
+</div>
