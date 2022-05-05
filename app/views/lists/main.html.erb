@@ -10,10 +10,12 @@
   <div class="cards">
 
   <% @lists.each do |list|  %>
-    <% if list.movies.first.nil? %>
-    <%   url = "https://picsum.photos/860/1290" %>
+    <% if list.photo.attached? %>
+      <% url = cl_image_path list.photo.key %>
+    <% elsif list.movies.first.nil? %>
+      <%   url = "https://picsum.photos/860/1290" %>
     <% else %>
-    <%   url = list.movies.sample.poster_url %>
+      <%   url = list.movies.sample.poster_url %>
     <% end %>
     <%= link_to list_path(list) do %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= url %>)"><%= list.name[0..15] %></div>

@@ -5,7 +5,13 @@
     <%= link_to list_path(list) do %>
 
      <div class="card-trip">
-     <% url = list.movies.first.nil? ? "https://picsum.photos/860/1290" : list.movies.sample.poster_url %>
+     <% if list.photo.attached? %>
+      <% url = cl_image_path list.photo.key %>
+     <% elsif list.movies.first.nil? %>
+      <%   url = "https://picsum.photos/860/1290" %>
+     <% else %>
+      <%   url = list.movies.sample.poster_url %>
+     <% end %>
      <img src= <%= url %> />
      <div class="card-trip-infos">
        <div>
