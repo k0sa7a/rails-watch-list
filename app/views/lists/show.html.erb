@@ -15,10 +15,10 @@
       <li class="list-group-item">
         <p class="movie-name"><%= movie.title %></p>
         <%= movie.bookmarks.find_by(list_id: @list.id).comment %>
-        <%= link_to "Delete",
+        <span class="important"><%= link_to "Delete",
                                        bookmark_path(movie.bookmarks.find_by(list_id: @list.id)),
                                        method: :delete,
-                                       data: {confirm: "Are you sure?"} %></li>
+                                       data: {confirm: "Are you sure?"} %></span></li>
     <% end %>
   </ul>
   <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-flat d-flex justify-content-around" %>
