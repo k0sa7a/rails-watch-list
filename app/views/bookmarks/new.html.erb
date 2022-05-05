@@ -1,6 +1,16 @@
-<h1>Create a new bookmark</h1>
+<!--<h1>Create a new bookmark</h1>
 <%= simple_form_for [@list, @bookmark] do |f| %>
   <%= f.input :comment %>
   <%= f.association :movie %>
   <%= f.submit %>
+<% end %> -->
+
+<div class="container">
+<h1 class="text-center">Create a new bookmark</h1>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+<%= f.input :comment %>
+<%= f.association :movie %>
+<%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
+<div class="form-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1546&q=80')"></div>
+</div>
